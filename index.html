@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ghost Hunter</title>
+    <style type="text/css">
+      #div_hunter {
+        height:450px;
+        width:342px;
+        margin:20px auto;
+      }
+      h1 { text-align:center }
+      body { width:342px; margin:0px auto  }
+      a { text-decoration:none }
+    </style> 
+  <script src="ghosthunter.js"></script>
+</head>
+<body>
+<div id="div_hunter"></div>
+<img alt="" src="PLAY.png" id="img_pause" />  &nbsp; &nbsp; <img alt="" src="MUTE.png" id="img_sound_on" />
+ <script>
+    var el = document.getElementById("div_hunter");
+    window.setTimeout(function () { HUNTER.init(el, "./"); }, 0);
+ </script> 
+ <img alt="" src="heal.png" id="img_heal" style="visibility:hidden" />
+</body>
+</html>

@@ -1,1 +1,1 @@
-# XP2018
+# The interactions are shaped accordingly to the nine circles of Dante's Inferno. The agents inevitably behave according to the rules of their respective hell where they are. Botman's behavior is changed at each level of the game. The BotMan is a supporting character who helps characterize the plot chosen from the nine hells of Dante.

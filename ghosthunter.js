@@ -43,7 +43,7 @@ Hunter.Ghost = function(game, map, colour) {
     };
 
     /* Collision detection(walls) is done when a ghost lands on an
-     * exact block, make sure they dont skip over it 
+     * exact block, make sure they dont skip over it
      */
     function addBounded(x1, x2) {
         var rem = x1 % 10,
@@ -276,7 +276,7 @@ Hunter.Ghost = function(game, map, colour) {
         if (level == 5) {
             if (userposition.x - position.x >= 4 || position.x - userposition.x >= 4) {
                 if (userposition.y - position.y >= 4 || position.y - userposition.y >= 4) {
-                    due = userdue; 
+                    due = userdue;
                 }
             }
         }
@@ -290,17 +290,17 @@ Hunter.Ghost = function(game, map, colour) {
                 (botmanposition.y >= position.y)? due = DOWN : due = UP;
              }
         }
-        
+
         if (level == 9) {
-            if (userposition.x - position.x >= botmanposition.x - position.x) 
+            if (userposition.x - position.x >= botmanposition.x - position.x)
                 (userposition.x - position.x >= userposition.y - position.y)? due = LEFT : due = RIGHT;
-            
-            else 
+
+            else
                 (botmanposition.x >= position.x)? due = LEFT : due = RIGHT;
 
-            if (userposition.y - position.y >= botmanposition.y - position.y) 
+            if (userposition.y - position.y >= botmanposition.y - position.y)
                 (userposition.y - position.y >= userposition.x - position.x)? due = DOWN : due = UP;
-            else    
+            else
                 (botmanposition.y >= position.y)? due = DOWN : due = UP;
         }
 
@@ -310,9 +310,9 @@ Hunter.Ghost = function(game, map, colour) {
                (userposition.y > position.y)? due = DOWN : due = UP;
             if (userposition.y == position.y)
                 (userposition.x < position.x)? due = LEFT : due = RIGHT;
-               
-        }        
-        
+
+        }
+
         return {
             "new": position,
             "old": oldPos
@@ -742,7 +742,7 @@ Hunter.BotMan = function(game, map) {
             if ((level == 2 || level == 8) && (position.x == userposition.x) && (userposition.y ==position.y))
                 lives = 4;
             if ((level == 9) && (position.x == userposition.x) && (userposition.y ==position.y))
-                lives -=1;                
+                lives -=1;
         }
 
         position = npos;
@@ -756,9 +756,9 @@ Hunter.BotMan = function(game, map) {
         else if (level == 3 || level == 4 || level == 6) {
             due = userdirection === LEFT && RIGHT || userdirection === RIGHT && LEFT || userdirection === UP && DOWN || UP;
         }
-        
+
         botmanposition = position;
-        
+
         return {
             "new": position,
             "old": oldPos
@@ -805,14 +805,14 @@ Hunter.BotMan = function(game, map) {
 
         var     s = map.blockSize,
             angle = calcAngle(direction, position);
-            
-        if (level == 8 && lives != 4) 
+
+        if (level == 8 && lives != 4)
             ctx.fillStyle = "#ff0000";
-        else if ((level == 3) || (level == 8 && lives == 4)) 
+        else if ((level == 3) || (level == 8 && lives == 4))
             ctx.fillStyle = "#000000";
         else
             ctx.fillStyle = "#ff0000";
-            
+
         ctx.beginPath();
 
         ctx.moveTo(((position.x / 10) * s) + s / 2,
@@ -878,8 +878,8 @@ Hunter.Map = function(size) {
                 gradient.addColorStop("0.4","#faebd7");
                 gradient.addColorStop("0.7","yellow");
                 gradient.addColorStop("1","#faebd7");
-                ctx.strokeStyle=gradient;   
-            }               
+                ctx.strokeStyle=gradient;
+            }
             else if (level == 9) {
                 var gradient=ctx.createLinearGradient(0,0, 342,0);
                 gradient.addColorStop("0","white");
@@ -887,7 +887,7 @@ Hunter.Map = function(size) {
                 gradient.addColorStop("0.4","#faebd7");
                 gradient.addColorStop("0.7","blue");
                 gradient.addColorStop("1","#faebd7");
-                ctx.strokeStyle=gradient;   
+                ctx.strokeStyle=gradient;
             }
             else {
                 var gradient=ctx.createLinearGradient(0,0, 342,0);
@@ -898,7 +898,7 @@ Hunter.Map = function(size) {
                 gradient.addColorStop("1","#faebd7");
                 ctx.strokeStyle=gradient;
                // ctx.strokeStyle = "#ef3340";
-               }            
+               }
         }
         ctx.lineWidth = 5;
         ctx.lineCap = "round";
@@ -960,21 +960,21 @@ Hunter.Map = function(size) {
                         ctx.rect((j * blockSize) + (blockSize / 2), (i * blockSize) + (blockSize / 2), Math.abs(5 - (pillSize / 3)), Math.PI * 2);
                         // ctx.arc((j * blockSize) + blockSize,
                         //         (i * blockSize) + blockSize,
-                        //         Math.abs(5 - (pillSize/3)), 
-                        //         0, 
-                        //         Math.PI * 2, false); 
+                        //         Math.abs(5 - (pillSize/3)),
+                        //         0,
+                        //         Math.PI * 2, false);
                     }
                     else {
                         ctx.drawImage(img_heal, (j * blockSize), (i * blockSize));
                         //                     ctx.fillStyle = "#000";
-                        // 		            ctx.fillRect((j * blockSize), (i * blockSize), 
+                        // 		            ctx.fillRect((j * blockSize), (i * blockSize),
                         //                                  blockSize, blockSize);
 
                         //                     ctx.fillStyle = "#FFF";
-                        //                     ctx.rect((j * blockSize),(i* blockSize), Math.abs(5 - (pillSize/3)),Math.PI * 2); 
+                        //                     ctx.rect((j * blockSize),(i* blockSize), Math.abs(5 - (pillSize/3)),Math.PI * 2);
                         //                     //  ctx.arcTo((j * blockSize),  (i * blockSize),
-                        //                     //         Math.abs(5 - (pillSize/3)), 
-                        //                     //         Math.PI * 2,0); 
+                        //                     //         Math.abs(5 - (pillSize/3)),
+                        //                     //         Math.PI * 2,0);
                     }
                     ctx.fill();
                     ctx.closePath();
@@ -1309,7 +1309,7 @@ var HUNTER = (function() {
         }
         else if (level == 8) {
             textoLevelHell = "Fraud";
-        } 
+        }
         else if (level == 9) {
             textoLevelHell = "Betrayal";
         }
@@ -1424,63 +1424,63 @@ var HUNTER = (function() {
                         dialog("Wakes up you crossed the Acheron");
                     else if (level==1 && (diff<2 && diff>=0))
                         dialog("Here is the first circle of the abyss");
-                        
+
                     else if (level==2 && (diff<=4 && diff>3))
                         dialog("Love, which in gentlest hearts");
                     else if (level==2 && (diff<=3 && diff>=2))
                         dialog("will soonest bloom. Love, which");
                     else if (level==2 && (diff<2 && diff>=0))
-                        dialog("permits no loved one not to love");     
-                        
+                        dialog("permits no loved one not to love");
+
                     else if (level==3 && (diff<=4 && diff>3))
                         dialog("Sightless and heedless of their neighbors");
                     else if (level==3 && (diff<=3 && diff>=2))
                         dialog("symbolizing the cold, selfish, and");
                     else if (level==3 && (diff<2 && diff>=0))
-                        dialog("empty of their lives, only aim eat");     
-                        
+                        dialog("empty of their lives, only aim eat");
+
                     else if (level==4 && (diff<=4 && diff>3))
                         dialog("Why do you hoard? Why waste?");
                     else if (level==4 && (diff<=3 && diff>=2))
                         dialog("Here you lose points but with 5000");
                     else if (level==4 && (diff<2 && diff>=0))
-                        dialog("You gain a bonus: your lives back");  
-                        
+                        dialog("You gain a bonus: your lives back");
+
                     else if (level==5 && (diff<=4 && diff>3))
                         dialog("That which had its tender and romantic");
                     else if (level==5 && (diff<=3 && diff>=2))
                         dialog("beginnings in the dalliance of indulged");
                     else if (level==5 && (diff<2 && diff>=0))
-                        dialog("passion, savage self-frustration");            
-                        
+                        dialog("passion, savage self-frustration");
+
                     else if (level==6 && (diff<=4 && diff>3))
                         dialog("Who say: the soul dies with the body");
                     else if (level==6 && (diff<=3 && diff>=2))
                         dialog("Portal of the future is shut and it will");
                     else if (level==6 && (diff<2 && diff>=0))
-                        dialog("no be possible for them to know anything");  
-                        
+                        dialog("no be possible for them to know anything");
+
                     else if (level==7 && (diff<=4 && diff>3))
                         dialog("As they wallowed in blood during their lives");
                     else if (level==7 && (diff<=3 && diff>=2))
                         dialog("So they are immersed in the blood forever");
                     else if (level==7 && (diff<2 && diff>=0))
-                        dialog("each according to the degree of his guilt");  
-                        
+                        dialog("each according to the degree of his guilt");
+
                     else if (level==8 && (diff<=4 && diff>3))
                         dialog("The horror of the punishment for thieves");
                     else if (level==8 && (diff<=3 && diff>=2))
                         dialog("is revealed gradually: just as they stole");
                     else if (level==8 && (diff<2 && diff>=0))
-                        dialog("other people's substance in life");  
-                        
+                        dialog("other people's substance in life");
+
                     else if (level==9 && (diff<=4 && diff>3))
                         dialog("The remorseless dead center of the ice");
                     else if (level==9 && (diff<=3 && diff>=2))
                         dialog("will serve to express their natures, so");
                     else if (level==9 && (diff<2 && diff>=0))
-                        dialog("are they bound only by the unyielding ice");                          
-                    else    
+                        dialog("are they bound only by the unyielding ice");
+                    else
                         dialog("game development course at herez.net");
                 }
             }
@@ -1626,8 +1626,8 @@ var HUNTER = (function() {
             e.preventDefault();
         }, false);
         document.getElementById("div_hunter").addEventListener('touchmove', function(e) {
-            var x = parseInt(event.changedTouches[0].clientX); 
-            var y = parseInt(event.changedTouches[0].clientY); 
+            var x = parseInt(event.changedTouches[0].clientX);
+            var y = parseInt(event.changedTouches[0].clientY);
             var eventObj = document.createEvent("Events");
             eventObj.initEvent("keydown", true, true);
 
@@ -1645,6 +1645,14 @@ var HUNTER = (function() {
             }
             document.dispatchEvent(eventObj);
         }, false);
+
+        audio.disableSound();
+        localStorage["soundDisabled"] = !soundDisabled();
+        if (soundDisabled())
+            img_sound_on.src = "MUTE.png";
+        else
+            img_sound_on.src = "SOUND.png";
+
 
         timer = window.setInterval(mainLoop, 1000 / Hunter.FPS);
     };

@@ -1646,14 +1646,6 @@ var HUNTER = (function() {
             document.dispatchEvent(eventObj);
         }, false);
 
-        audio.disableSound();
-        localStorage["soundDisabled"] = !soundDisabled();
-        if (soundDisabled())
-            img_sound_on.src = "MUTE.png";
-        else
-            img_sound_on.src = "SOUND.png";
-
-
         timer = window.setInterval(mainLoop, 1000 / Hunter.FPS);
     };
 
